@@ -131,9 +131,9 @@ https://www.themealdb.com/api.php
 
 # 📱 App Screenshots
 
-## 🚀 Splash Screen
+## 🚀 Premium Splash Screen
 
-![Splash Screen](screenshots/splash_screen.png)
+![Premium Splash](screenshots/premiumsplash.png)
 
 ---
 
@@ -141,113 +141,119 @@ https://www.themealdb.com/api.php
 
 ### 🍕 Discover Recipes
 
-![Onboarding 1](screenshots/onboarding_1.png)
+![Onboarding 1](screenshots/boarding1.png)
 
 ### ❤️ Save Favorites
 
-![Onboarding 2](screenshots/onboarding_2.png)
+![Onboarding 2](screenshots/boarding2.png)
 
 ### 👨‍🍳 Cook Smarter
 
-![Onboarding 3](screenshots/onboarding_3.png)
+![Onboarding 3](screenshots/boarding3.png)
 
 ---
 
 ## 🔐 Login Screen
 
-![Login Screen](screenshots/login_screen.png)
+![Login Screen](screenshots/login.png)
 
 ---
 
 ## 📝 Signup Screen
 
-![Signup Screen](screenshots/signup_screen.png)
+![Signup Screen](screenshots/signup.png)
 
 ---
 
 ## 🏠 Home Screen
 
-![Home Screen](screenshots/home_screen.png)
+![Home Screen](screenshots/home.png)
 
-![Home Screen 2](screenshots/home_screen_2.png)
+![Home Screen 2](screenshots/home2.png)
 
 ---
 
 ## 🍱 Online Recipes
 
-![Online Recipes](screenshots/online_recipes.png)
+![Online Recipes](screenshots/onlinerecipes.png)
 
 ---
 
 ## 🧩 Category Filtering
 
-![Category Filtering](screenshots/category_filtering.png)
+![Category Filtering](screenshots/categories.png)
 
 ---
 
 ## 🔍 Search Functionality
 
-![Search Functionality](screenshots/search_screen.png)
+![Search Functionality](screenshots/search.png)
 
 ---
 
 ## 📖 Recipe Detail Screen
 
-![Recipe Detail](screenshots/recipe_detail.png)
+![Recipe Detail](screenshots/description.png)
 
-![Recipe Detail 2](screenshots/recipe_detail_2.png)
+![Recipe Detail 2](screenshots/description2.png)
 
 ---
 
 ## ❤️ Favorites Screen
 
-![Favorites Screen](screenshots/favorites_screen.png)
+![Favorites Screen](screenshots/favourites.png)
 
-![Favorites Screen 2](screenshots/favorites_screen_2.png)
+![Favorites Screen 2](screenshots/favourites2.png)
 
 ---
 
 ## 🌙 Dark Mode
 
-![Dark Mode](screenshots/dark_mode.png)
+![Dark Mode](screenshots/darkmode.png)
 
 ---
 
 ## 👤 Profile Screen
 
-![Profile Screen](screenshots/profile_screen.png)
+![Profile Screen](screenshots/profile.png)
 
-![Profile Screen 2](screenshots/profile_screen_2.png)
+![Profile Screen 2](screenshots/profile2.png)
+
+---
+
+## 👨‍💻 About Developer Section
+
+![About Developer](screenshots/about.png)
 
 ---
 
 ## ⚙️ Settings Screen
 
-![Settings Screen](screenshots/settings_screen.png)
+![Settings Screen](screenshots/settings.png)
 
 ---
 
 ## 🕘 Recently Viewed Recipes
 
-![Recently Viewed](screenshots/recently_viewed.png)
+![Recently Viewed](screenshots/recent.png)
 
 ---
 
 ## 🔔 Notification UI
 
-![Notification UI](screenshots/notification_ui.png)
+![Notification UI](screenshots/notification.png)
 
 ---
 
 ## 📴 Offline Internet Detection
 
-![Offline Screen](screenshots/offline_screen.png)
+![Offline Screen](screenshots/offline.png)
 
 ---
 
 ## ⚠️ Empty State UI
 
-![Empty State UI](screenshots/empty_state.png)
+![Empty State UI](screenshots/wrongfood.png)
 
 ---
 
@@ -310,3 +316,75 @@ com.example.recipenest
 │   └── Constants.kt
 │
 └── MainActivity.kt
+```
+
+---
+
+# 📦 Installation Guide
+
+## Clone Repository
+
+```bash
+git clone https://github.com/aryangoud8978/RecipeNest-Task5.git
+```
+
+---
+
+## Open in Android Studio
+
+1. Open Android Studio
+2. Click Open Project
+3. Select RecipeNest Folder
+4. Sync Gradle
+5. Run App on Emulator or Device
+
+---
+
+# 🎯 Internship Task Features Covered
+
+✅ Modern Android UI  
+✅ API Integration  
+✅ Firebase Authentication  
+✅ Room Database Storage  
+✅ State Management  
+✅ Navigation System  
+✅ Responsive Layouts  
+✅ Persistent User Experience  
+✅ Modern Compose Architecture  
+✅ Advanced Jetpack Compose Concepts
+
+---
+
+# 👨‍💻 Developer
+
+## Aryan Goud
+
+💻 Android Developer  
+🚀 Kotlin & Jetpack Compose Enthusiast  
+📱 Flutter Developer  
+🔥 Firebase Learner
+
+### 🔗 GitHub
+
+https://github.com/aryangoud8978
+
+---
+
+# ⭐ Final Result
+
+RecipeNest is a complete premium modern Android recipe application that demonstrates:
+
+✅ Professional Android Development  
+✅ Modern UI/UX Principles  
+✅ API Integration Skills  
+✅ Firebase Authentication  
+✅ Database Management  
+✅ State Handling  
+✅ Clean Architecture  
+✅ Real-World App Development Concepts
+
+---
+
+# ❤️ Thank You
+
+If you like this project, consider giving it a ⭐ on GitHub.
