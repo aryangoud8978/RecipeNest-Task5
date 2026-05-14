@@ -1,1 +1,10 @@
 /build
+.gradle
+/local.properties
+/.idea
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.aab
+**/build/
