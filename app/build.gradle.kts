@@ -156,4 +156,5 @@ dependencies {
     debugImplementation(
         libs.androidx.compose.ui.test.manifest
     )
+    implementation("androidx.compose.foundation:foundation:1.7.0")
 }

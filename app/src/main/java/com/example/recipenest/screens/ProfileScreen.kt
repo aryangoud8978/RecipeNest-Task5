@@ -1,7 +1,6 @@
 package com.example.recipenest.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,21 +10,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,120 +31,89 @@ fun ProfileScreen(
     onLogout: () -> Unit
 ) {
 
-    var showSettings by remember {
-        mutableStateOf(false)
-    }
+    val isDarkMode =
+        ThemeManager.isDarkMode.value
 
-    if (showSettings) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                MaterialTheme.colorScheme.background
+            )
+            .padding(20.dp)
+    ) {
 
-        SettingsScreen()
+        Spacer(
+            modifier = Modifier.height(30.dp)
+        )
 
-    } else {
+        Text(
+            text = "👨‍🍳",
+            fontSize = 90.sp
+        )
 
-        val isDarkMode = ThemeManager.isDarkMode.value
+        Spacer(
+            modifier = Modifier.height(16.dp)
+        )
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
-                .padding(20.dp),
+        Text(
+            text = "Aryan Goud",
 
-            horizontalAlignment = Alignment.CenterHorizontally
+            fontSize = 30.sp,
+
+            fontWeight = FontWeight.Bold,
+
+            color =
+                MaterialTheme.colorScheme.onBackground
+        )
+
+        Spacer(
+            modifier = Modifier.height(8.dp)
+        )
+
+        Text(
+            text = "Android Developer",
+
+            fontSize = 18.sp,
+
+            color =
+                MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Spacer(
+            modifier = Modifier.height(28.dp)
+        )
+
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+
+            shape = RoundedCornerShape(20.dp),
+
+            colors = CardDefaults.cardColors(
+
+                containerColor =
+                    MaterialTheme.colorScheme.surfaceVariant
+            )
         ) {
 
-            Spacer(modifier = Modifier.height(50.dp))
-
-            Text(
-                text = "👨‍🍳",
-                fontSize = 100.sp
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text(
-                text = "Aryan Goud",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "aryangoud@example.com",
-                fontSize = 18.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(70.dp),
-
-                shape = RoundedCornerShape(20.dp),
-
-                colors = CardDefaults.cardColors(
-                    containerColor =
-                        MaterialTheme.colorScheme.surfaceVariant
-                ),
-
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp
-                )
+            Column(
+                modifier = Modifier.padding(20.dp)
             ) {
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 20.dp),
+                Text(
+                    text = "⚙️ App Settings",
 
-                    verticalAlignment = Alignment.CenterVertically,
+                    fontSize = 20.sp,
 
-                    horizontalArrangement =
-                        Arrangement.SpaceBetween
-                ) {
-
-                    Text(
-                        text = "Dark Mode",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Medium,
-                        color =
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-
-                    Switch(
-                        checked = isDarkMode,
-
-                        onCheckedChange = {
-                            ThemeManager.isDarkMode.value = it
-                        }
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        showSettings = true
-                    },
-
-                shape = RoundedCornerShape(20.dp),
-
-                colors = CardDefaults.cardColors(
-                    containerColor =
-                        MaterialTheme.colorScheme.surfaceVariant
+                    fontWeight = FontWeight.Bold
                 )
-            ) {
+
+                Spacer(
+                    modifier = Modifier.height(20.dp)
+                )
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp),
+                    modifier = Modifier.fillMaxWidth(),
 
                     horizontalArrangement =
                         Arrangement.SpaceBetween,
@@ -162,100 +123,143 @@ fun ProfileScreen(
                 ) {
 
                     Text(
-                        text = "Settings",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Medium,
-                        color =
-                            MaterialTheme.colorScheme.onSurfaceVariant
+                        text = "Dark Mode",
+
+                        fontSize = 18.sp
                     )
 
-                    Icon(
-                        imageVector = Icons.Default.Settings,
-                        contentDescription = "Settings"
+                    Switch(
+
+                        checked = isDarkMode,
+
+                        onCheckedChange = {
+
+                            ThemeManager.isDarkMode.value = it
+                        }
                     )
                 }
             }
+        }
 
-            Spacer(modifier = Modifier.height(24.dp))
+        Spacer(
+            modifier = Modifier.height(24.dp)
+        )
 
-            ProfileCard(
-                title = "Favorite Recipes",
-                value = "12"
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+
+            shape = RoundedCornerShape(20.dp),
+
+            colors = CardDefaults.cardColors(
+
+                containerColor =
+                    MaterialTheme.colorScheme.surfaceVariant
             )
+        ) {
 
-            Spacer(modifier = Modifier.height(16.dp))
-
-            ProfileCard(
-                title = "Recipes Viewed",
-                value = "48"
-            )
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Button(
-                onClick = onLogout,
-
-                modifier = Modifier.fillMaxWidth(),
-
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red
-                )
+            Column(
+                modifier = Modifier.padding(20.dp)
             ) {
 
                 Text(
-                    text = "Logout",
-                    color = Color.White
+                    text = "👨‍💻 About Developer",
+
+                    fontSize = 20.sp,
+
+                    fontWeight = FontWeight.Bold
+                )
+
+                Spacer(
+                    modifier = Modifier.height(20.dp)
+                )
+
+                Text(
+                    text = "Name: Aryan Goud",
+
+                    fontSize = 17.sp
+                )
+
+                Spacer(
+                    modifier = Modifier.height(10.dp)
+                )
+
+                Text(
+                    text = "Role: Android Developer",
+
+                    fontSize = 17.sp
+                )
+
+                Spacer(
+                    modifier = Modifier.height(10.dp)
+                )
+
+                Text(
+                    text =
+                        "Skills: Kotlin, Jetpack Compose, Flutter, Firebase",
+
+                    fontSize = 17.sp
+                )
+
+                Spacer(
+                    modifier = Modifier.height(10.dp)
+                )
+
+                Text(
+                    text =
+                        "GitHub: github.com/aryangoud8978",
+
+                    fontSize = 17.sp
+                )
+
+                Spacer(
+                    modifier = Modifier.height(10.dp)
+                )
+
+                Text(
+                    text =
+                        "LinkedIn: Aryan Goud",
+
+                    fontSize = 17.sp
+                )
+
+                Spacer(
+                    modifier = Modifier.height(10.dp)
+                )
+
+                Text(
+                    text = "Version: RecipeNest v5.0",
+
+                    fontSize = 17.sp
                 )
             }
         }
-    }
-}
 
-@Composable
-fun ProfileCard(
-    title: String,
-    value: String
-) {
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(100.dp),
-
-        shape = RoundedCornerShape(20.dp),
-
-        colors = CardDefaults.cardColors(
-            containerColor =
-                MaterialTheme.colorScheme.surfaceVariant
-        ),
-
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 8.dp
+        Spacer(
+            modifier = Modifier.height(30.dp)
         )
-    ) {
 
-        Column(
+        Button(
+
+            onClick = {
+
+                onLogout()
+            },
+
             modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp),
+                .fillMaxWidth()
+                .height(55.dp),
 
-            verticalArrangement = Arrangement.Center
+            colors = ButtonDefaults.buttonColors(
+
+                containerColor =
+                    Color(0xFFFF6B00)
+            )
         ) {
 
             Text(
-                text = title,
-                fontSize = 18.sp,
-                color =
-                    MaterialTheme.colorScheme.onSurfaceVariant
-            )
+                text = "Logout",
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = value,
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFFF6B00)
+                fontSize = 18.sp
             )
         }
     }

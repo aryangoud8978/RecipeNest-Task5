@@ -5,6 +5,10 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.Animatable
+import kotlinx.coroutines.launch
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,32 +17,19 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,8 +39,9 @@ import com.example.recipenest.auth.SignupScreen
 import com.example.recipenest.components.ThemeManager
 import com.example.recipenest.screens.FavoriteScreen
 import com.example.recipenest.screens.HomeScreen
+import com.example.recipenest.screens.OnboardingScreen
 import com.example.recipenest.screens.ProfileScreen
-import com.example.recipenest.screens.RecipeDetailScreen
+import com.example.recipenest.utils.OnboardingPreferences
 import com.example.recipenest.viewmodel.AuthViewModel
 
 class MainActivity : ComponentActivity() {
@@ -83,6 +75,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppScreen() {
 
+    val context = LocalContext.current
+
+    val onboardingPreferences =
+        remember {
+            OnboardingPreferences(context)
+        }
+
+    val coroutineScope =
+        rememberCoroutineScope()
+
+    val hasSeenOnboarding by
+    onboardingPreferences
+        .hasSeenOnboarding
+        .collectAsState(initial = false)
+
     val authViewModel: AuthViewModel =
         viewModel()
 
@@ -102,16 +109,32 @@ fun AppScreen() {
 
             showSplash = false
 
-        }, 2000)
+        }, 2500)
     }
 
-    if (showSplash) {
+    when {
 
-        SplashScreen()
+        showSplash -> {
 
-    } else {
+            SplashScreen()
+        }
 
-        if (authViewModel.isUserLoggedIn.value) {
+        !hasSeenOnboarding -> {
+
+            OnboardingScreen(
+
+                onFinish = {
+
+                    coroutineScope.launch {
+
+                        onboardingPreferences
+                            .saveOnboardingState()
+                    }
+                }
+            )
+        }
+
+        authViewModel.isUserLoggedIn.value -> {
 
             MainScreen(
 
@@ -120,8 +143,9 @@ fun AppScreen() {
                     authViewModel.logoutUser()
                 }
             )
+        }
 
-        } else {
+        else -> {
 
             if (showSignup) {
 
@@ -175,7 +199,6 @@ fun AppScreen() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     onLogout: () -> Unit
@@ -185,179 +208,92 @@ fun MainScreen(
         mutableIntStateOf(0)
     }
 
-    var showDetailScreen by remember {
-        mutableStateOf(false)
-    }
+    Scaffold(
 
-    if (showDetailScreen) {
+        bottomBar = {
 
-        Scaffold(
+            NavigationBar {
 
-            topBar = {
+                NavigationBarItem(
 
-                TopAppBar(
+                    selected = selectedItem == 0,
 
-                    title = {
-
-                        Text(
-                            text = "Recipe Details"
-                        )
+                    onClick = {
+                        selectedItem = 0
                     },
 
-                    navigationIcon = {
+                    icon = {
+                        Text("🏠")
+                    },
 
-                        IconButton(
+                    label = {
+                        Text("Home")
+                    }
+                )
 
-                            onClick = {
+                NavigationBarItem(
 
-                                showDetailScreen = false
-                            }
-                        ) {
+                    selected = selectedItem == 1,
 
-                            Icon(
-                                imageVector =
-                                    Icons.AutoMirrored.Filled.ArrowBack,
+                    onClick = {
+                        selectedItem = 1
+                    },
 
-                                contentDescription = "Back"
-                            )
-                        }
+                    icon = {
+                        Text("❤️")
+                    },
+
+                    label = {
+                        Text("Favorites")
+                    }
+                )
+
+                NavigationBarItem(
+
+                    selected = selectedItem == 2,
+
+                    onClick = {
+                        selectedItem = 2
+                    },
+
+                    icon = {
+                        Text("👤")
+                    },
+
+                    label = {
+                        Text("Profile")
                     }
                 )
             }
-
-        ) { paddingValues ->
-
-            Box(
-                modifier =
-                    Modifier.padding(paddingValues)
-            ) {
-
-                RecipeDetailScreen()
-            }
         }
 
-    } else {
+    ) { paddingValues ->
 
-        Scaffold(
+        Box(
+            modifier = Modifier.padding(
+                paddingValues
+            )
+        ) {
 
-            bottomBar = {
+            when (selectedItem) {
 
-                NavigationBar {
+                0 -> {
 
-                    NavigationBarItem(
-
-                        selected = selectedItem == 0,
-
-                        onClick = {
-
-                            selectedItem = 0
-                        },
-
-                        icon = {
-
-                            Icon(
-                                imageVector =
-                                    Icons.Default.Home,
-
-                                contentDescription = "Home"
-                            )
-                        },
-
-                        label = {
-
-                            Text(
-                                text = "Home"
-                            )
-                        }
-                    )
-
-                    NavigationBarItem(
-
-                        selected = selectedItem == 1,
-
-                        onClick = {
-
-                            selectedItem = 1
-                        },
-
-                        icon = {
-
-                            Icon(
-                                imageVector =
-                                    Icons.Default.Favorite,
-
-                                contentDescription = "Favorites"
-                            )
-                        },
-
-                        label = {
-
-                            Text(
-                                text = "Favorites"
-                            )
-                        }
-                    )
-
-                    NavigationBarItem(
-
-                        selected = selectedItem == 2,
-
-                        onClick = {
-
-                            selectedItem = 2
-                        },
-
-                        icon = {
-
-                            Icon(
-                                imageVector =
-                                    Icons.Default.Person,
-
-                                contentDescription = "Profile"
-                            )
-                        },
-
-                        label = {
-
-                            Text(
-                                text = "Profile"
-                            )
-                        }
+                    HomeScreen(
+                        onRecipeClick = {}
                     )
                 }
-            }
 
-        ) { paddingValues ->
+                1 -> {
 
-            Box(
-                modifier =
-                    Modifier.padding(paddingValues)
-            ) {
+                    FavoriteScreen()
+                }
 
-                when (selectedItem) {
+                2 -> {
 
-                    0 -> {
-
-                        HomeScreen(
-
-                            onRecipeClick = {
-
-                                showDetailScreen = true
-                            }
-                        )
-                    }
-
-                    1 -> {
-
-                        FavoriteScreen()
-                    }
-
-                    2 -> {
-
-                        ProfileScreen(
-                            onLogout = onLogout
-                        )
-                    }
+                    ProfileScreen(
+                        onLogout = onLogout
+                    )
                 }
             }
         }
@@ -367,11 +303,38 @@ fun MainScreen(
 @Composable
 fun SplashScreen() {
 
-    Box(
+    val scale = remember {
+        Animatable(0.6f)
+    }
 
+    LaunchedEffect(true) {
+
+        scale.animateTo(
+
+            targetValue = 1f,
+
+            animationSpec = tween(
+
+                durationMillis = 1200,
+
+                easing = FastOutSlowInEasing
+            )
+        )
+    }
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFFF8F0)),
+            .background(
+                Brush.verticalGradient(
+
+                    colors = listOf(
+
+                        Color(0xFFFF8C42),
+                        Color(0xFFFF6B00)
+                    )
+                )
+            ),
 
         contentAlignment = Alignment.Center
     ) {
@@ -386,36 +349,42 @@ fun SplashScreen() {
         ) {
 
             Text(
-                text = "🍔",
-                fontSize = 100.sp
+
+                text = "🍽️",
+
+                fontSize =
+                    (120 * scale.value).sp
             )
 
             Spacer(
-                modifier = Modifier.height(20.dp)
+                modifier = Modifier.height(24.dp)
             )
 
             Text(
 
                 text = "RecipeNest",
 
-                fontSize = 36.sp,
+                fontSize =
+                    (38 * scale.value).sp,
 
                 fontWeight = FontWeight.Bold,
 
-                color = Color(0xFFFF6B00)
+                color = Color.White
             )
 
             Spacer(
-                modifier = Modifier.height(10.dp)
+                modifier = Modifier.height(12.dp)
             )
 
             Text(
 
-                text = "Delicious Recipes Everyday",
+                text = "Cook • Explore • Enjoy",
 
                 fontSize = 18.sp,
 
-                color = Color.Gray
+                color = Color.White.copy(
+                    alpha = 0.9f
+                )
             )
         }
     }
