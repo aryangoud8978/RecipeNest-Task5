@@ -1,244 +1,297 @@
-# 🍽️ RecipeNest – Modern Android Recipe App
+🍽️ RecipeNest – Premium Modern Android Recipe App
 
-RecipeNest is a modern Android Recipe Application built using Kotlin and Jetpack Compose in Android Studio as part of the ApexPlanet Android App Development Internship – Task 4.
+RecipeNest is a beautifully designed modern Android Recipe Application built using Kotlin and Jetpack Compose in Android Studio as part of the ApexPlanet Android App Development Internship.
 
-The app provides a beautiful and smooth user experience with real-time recipe data, modern UI design, API integration, category filtering, persistent favorites, Firebase authentication, offline handling, settings management, notifications, dark mode support, and professional animations.
+The application delivers a premium cooking experience with:
 
-# ✨ Features
+✨ Real-time recipe API integration
+✨ Modern Material 3 UI
+✨ Animated onboarding experience
+✨ Favorites system with Room Database
+✨ Dark Mode support
+✨ Search & category filtering
+✨ Smooth navigation and responsive layouts
 
-## 🚀 Core Features
+RecipeNest combines elegant UI/UX with powerful Android development concepts to create a complete professional-level mobile application.
 
-- Splash Screen
-- Login & Signup Authentication
-- Modern Jetpack Compose UI
-- Bottom Navigation
-- Real-Time Recipe API Integration
-- Internet Recipe Images
-- Search Functionality
-- Recipe Detail Screen
-- Favorites Screen
-- Profile Screen
-- Settings Screen
-- Recently Viewed Recipes
-- Push Notification UI
-- Offline Internet Detection
-- Dark Mode Support
-- Responsive Layout
+🚀 App Highlights
 
-## 🌐 API & Backend Features
+✅ Splash Screen
+✅ Modern Onboarding Screens
+✅ Login Flow
+✅ Jetpack Compose UI
+✅ Bottom Navigation
+✅ Real-Time Recipe API Integration
+✅ Search Recipes
+✅ Category Filtering
+✅ Recipe Detail Screen
+✅ Favorites System
+✅ Persistent Local Storage
+✅ Room Database Integration
+✅ Retrofit API Calls
+✅ Gson JSON Parsing
+✅ Dark Mode Support
+✅ Smooth Navigation Animations
+✅ Pull-to-Refresh
+✅ Shimmer Loading Effects
+✅ Professional Responsive UI
+✅ Modern Material 3 Design
+✅ Beautiful Typography & Layouts
+✅ Internet Recipe Images
+✅ Offline Favorite Access
+✅ Error Handling UI
+✅ Empty State Screens
+✅ Profile Screen with App Settings
 
-- Retrofit API Integration
-- JSON Parsing using Gson
-- Real Recipe Fetching
-- Dynamic Recipe Loading
-- Pull-to-Refresh Support
-- Error Handling UI
-- Empty State UI
-- Smooth Data Updates
-- Search + Category Filtering
-- Firebase Authentication
-- Persistent User Sessions
+🎨 Premium UI Features
 
-## 🎨 UI/UX Features
+🌟 Animated Splash Screen
+🌟 Interactive Onboarding Experience
+🌟 Smooth Page Indicators
+🌟 Modern Rounded Buttons
+🌟 Beautiful Recipe Cards
+🌟 Professional Layout Spacing
+🌟 Material 3 Components
+🌟 Elegant Dark Mode Toggle
+🌟 Clean Bottom Navigation Design
+🌟 Interactive Favorite Buttons
+🌟 Responsive Mobile Layout
 
-- Featured Recipe Banner
-- Category Filtering
-- Shimmer Loading Animation
-- Smooth Screen Transitions
-- Modern Material 3 Design
-- Interactive Favorite Button
-- Beautiful Card Layouts
-- Professional Typography & Spacing
-- Smooth Navigation Animations
-- Responsive Compose Layouts
+🌐 API Integration
 
-## ❤️ Advanced Features
+RecipeNest uses the powerful TheMealDB API for fetching live recipe data.
 
-- Persistent Favorites using Room Database
-- Offline Favorite Storage
-- Real-Time Favorite Updates
-- Animated Navigation Transitions
-- Search + Category Combined Filtering
-- DataStore Preferences
-- Notification Support
-- Recently Viewed Recipe Tracking
-- Offline Internet Detection Screen
+🔗 API Used
 
-# 🛠️ Technologies Used
-
-| Technology | Purpose |
-|---|---|
-| Kotlin | Programming Language |
-| Jetpack Compose | Modern Android UI |
-| Retrofit | API Integration |
-| Gson Converter | JSON Parsing |
-| Coil | Image Loading |
-| Room Database | Local Storage |
-| Firebase Authentication | User Authentication |
-| DataStore | Preferences Storage |
-| Material 3 | UI Components |
-| Coroutines | Asynchronous Programming |
-
-# 🌐 API Used
-
-## TheMealDB API
-
+TheMealDB API
 https://www.themealdb.com/api.php
 
-### Used for:
+Features Powered by API
 
-- Fetching recipes
-- Recipe images
-- Recipe categories
-- Recipe instructions
-- Search functionality
+🍕 Real-Time Recipes
+🍜 Recipe Images
+🥗 Recipe Categories
+📖 Cooking Instructions
+🔍 Recipe Search
+🌎 Global Food Collection
 
-# 📱 App Screenshots
+🛠️ Technologies Used
+Technology	Purpose
+Kotlin	Main Programming Language
+Jetpack Compose	Modern Android UI Toolkit
+Retrofit	API Integration
+Gson Converter	JSON Parsing
+Coil	Image Loading
+Room Database	Offline Local Storage
+Material 3	UI Components
+Coroutines	Asynchronous Operations
+Navigation Compose	Screen Navigation
+SharedPreferences	Onboarding State Management
+📱 Complete App Flow
+🚀 Splash Screen
 
-## 🚀 Splash Screen
+A beautiful premium splash screen with RecipeNest branding.
 
-![Splash Screen](screenshots/splash.png)
+<img width="250" alt="Splash Screen" src="attachment:file_000000009c8c7207a34347321ba4309b" />
+👋 Onboarding Experience
+🍕 Discover Recipes
 
----
+Explore thousands of delicious recipes from around the world.
 
-## 🔐 Login Screen
+<img width="250" alt="Onboarding 1" src="attachment:file_000000002cb871fa91af4ab6677a2775" />
+❤️ Save Favorites
 
-![Login Screen](screenshots/login.png)
+Bookmark favorite recipes and access them anytime.
 
----
+<img width="250" alt="Onboarding 2" src="attachment:file_00000000d15471fa94654172aefee6f3" />
+👨‍🍳 Cook Smarter
 
-## 📝 Signup Screen
+Search recipes, explore categories, and enjoy a modern cooking experience.
 
-![Signup Screen](screenshots/signup.png)
+<img width="250" alt="Onboarding 3" src="attachment:file_00000000ee0871faaf41736332cb69e2" />
+🔐 Authentication Flow
 
----
+✅ Login Screen
+✅ User-Friendly Navigation
+✅ First-Time User Detection
+✅ Get Started Experience
 
-## 🏠 Home Screen
+🏠 Home Screen Features
 
-![Home Screen](screenshots/home.png)
+✅ Featured Recipe Banner
+✅ Trending Recipes
+✅ Dynamic Recipe Loading
+✅ Internet Images
+✅ Pull-to-Refresh
+✅ Modern Card Layouts
+✅ Smooth Scrolling Experience
 
-![Home Screen 2](screenshots/home2.png)
+🔍 Search Functionality
 
----
+Users can:
 
-## 🍱 Online Recipes
+🔎 Search recipes instantly
+🔎 Find recipes dynamically
+🔎 Explore food collections
+🔎 Combine search with categories
 
-![Online Recipes](screenshots/onlinerecipes.png)
+🧩 Category Filtering
 
----
+RecipeNest supports category-based filtering for better recipe discovery.
 
-## 🧩 Category Filtering
+Examples:
 
-![Category Filtering](screenshots/categories.png)
+🍕 Pizza
+🍔 Burger
+🥗 Salad
+🍜 Noodles
+🍰 Desserts
 
----
+📖 Recipe Detail Screen
 
-## 🔍 Search Functionality
+Detailed recipe pages include:
 
-![Search Functionality](screenshots/search.png)
+✅ Recipe Image
+✅ Recipe Name
+✅ Cooking Instructions
+✅ Favorite Button
+✅ Smooth UI Design
+✅ Scrollable Content
 
----
+❤️ Favorites System
 
-## 📖 Recipe Detail Screen
+Users can save favorite recipes locally using Room Database.
 
-![Recipe Detail](screenshots/description.png)
+Features
 
-![Recipe Detail 2](screenshots/description2.png)
+✅ Offline Favorite Storage
+✅ Persistent Data
+✅ Real-Time Updates
+✅ Favorite Toggle System
 
----
+👤 Profile Screen
 
-## ❤️ Favorites Screen
+The profile section includes:
 
-![Favorites Screen](screenshots/favourites.png)
+✅ Developer Information
+✅ Dark Mode Toggle
+✅ App Settings
+✅ Logout Button
+✅ Professional UI Layout
 
-![Favorites Screen 2](screenshots/favourites2.png)
+<img width="250" alt="Profile Screen" src="attachment:file_00000000d99071fa9f49c00a6c9ed4b0" />
+🌙 Dark Mode Support
 
----
+RecipeNest supports:
 
-## 🌙 Dark Mode
+✅ Light Theme
+✅ Dark Theme
+✅ Dynamic UI Switching
 
-![Dark Mode](screenshots/darkmode.png)
+⚡ Advanced Features
 
----
+✨ Animated Navigation
+✨ Smooth Transitions
+✨ Modern Compose Architecture
+✨ Offline Data Persistence
+✨ API Error Handling
+✨ Empty State UI
+✨ Shimmer Loading Animation
+✨ Clean Architecture Structure
 
-## 👤 Profile Screen
-
-![Profile Screen](screenshots/profile.png)
-
-![Profile Screen 2](screenshots/profile2.png)
-
----
-
-## ⚙️ Settings Screen
-
-![Settings Screen](screenshots/settings.png)
-
----
-
-## 🕘 Recently Viewed Recipes
-
-![Recently Viewed](screenshots/recent.png)
-
----
-
-## 🔔 Notification UI
-
-![Notification UI](screenshots/notification.png)
-
----
-
-## 📴 Offline Internet Detection
-
-![Offline Screen](screenshots/offline.png)
-
----
-
-## ⚠️ Empty State UI
-
-![Empty State UI](screenshots/wrongfood.png)
-
-# 📂 Project Structure
-
-```bash
+📂 Project Structure
 com.example.recipenest
 │
 ├── api
 │   ├── RecipeApiService.kt
 │   ├── FavoriteRecipeDao.kt
-│   ├── RecipeDatabase.kt
-│   └── RetrofitInstance.kt
-│
-├── auth
-│   ├── LoginScreen.kt
-│   ├── SignupScreen.kt
-│   └── AuthViewModel.kt
+│   └── RecipeDatabase.kt
 │
 ├── components
 │   ├── CategoryChip.kt
 │   ├── FeaturedBanner.kt
 │   ├── OnlineRecipeCard.kt
-│   ├── RecentRecipeCard.kt
 │   ├── ShimmerRecipeCard.kt
-│   ├── ThemeManager.kt
-│   └── SettingsManager.kt
+│   ├── BottomNavigationBar.kt
+│   └── ThemeManager.kt
 │
 ├── model
 │   ├── OnlineRecipe.kt
 │   ├── FavoriteRecipeEntity.kt
-│   └── RecentRecipe.kt
+│   └── OnboardingItem.kt
 │
 ├── screens
+│   ├── SplashScreen.kt
+│   ├── OnboardingScreen.kt
+│   ├── LoginScreen.kt
 │   ├── HomeScreen.kt
 │   ├── FavoriteScreen.kt
 │   ├── ProfileScreen.kt
-│   ├── SettingsScreen.kt
-│   └── RecipeDetailScreen.kt
+│   └── OnlineRecipeDetailScreen.kt
 │
-├── utils
-│   ├── NetworkUtils.kt
-│   ├── NotificationHelper.kt
-│   ├── RecentRecipeManager.kt
-│   └── SettingsDataStore.kt
+├── navigation
+│   └── AppNavigation.kt
 │
 └── MainActivity.kt
-```
+📦 Installation Guide
+Clone Repository
+git clone https://github.com/aryangoud8978/RecipeNest-Task5.git
+Open in Android Studio
+Open Android Studio
+Click Open Project
+Select RecipeNest Folder
+Sync Gradle
+Run App on Emulator or Device
+📸 Suggested Screenshots for README
+
+✅ Splash Screen
+✅ Onboarding Screen 1
+✅ Onboarding Screen 2
+✅ Onboarding Screen 3
+✅ Login Screen
+✅ Home Screen
+✅ Search Recipes
+✅ Category Filtering
+✅ Recipe Detail Screen
+✅ Favorites Screen
+✅ Dark Mode
+✅ Profile Screen
+
+🎯 Internship Task Features Covered
+
+✅ Modern Android UI
+✅ API Integration
+✅ Local Database Storage
+✅ State Management
+✅ Navigation System
+✅ Responsive Layouts
+✅ Persistent User Experience
+✅ Advanced Jetpack Compose Concepts
+
+👨‍💻 Developer
+Aryan Goud
+
+💻 Android Developer
+🚀 Kotlin & Jetpack Compose Enthusiast
+📱 Flutter Developer
+🔥 Firebase Learner
+
+🔗 GitHub
+
+https://github.com/aryangoud8978
+
+⭐ Final Result
+
+RecipeNest is a complete modern Android recipe application that demonstrates:
+
+✅ Professional Android Development
+✅ Modern UI/UX Principles
+✅ API Integration Skills
+✅ Database Management
+✅ State Handling
+✅ Clean Architecture
+✅ Real-World App Development Concepts
+
+❤️ Thank You
+
+If you like this project, consider giving it a ⭐ on GitHub.
